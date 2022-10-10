@@ -10,15 +10,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MainButton } from "../../components";
 import { colors, icons, fontSizes } from "../../constants/index"
 import { isValiEmail, isValiPassord } from '../../utilies/Validation'
-import Home from "../home";
+
 
 const Login = (props) => {
     const [keyboardIsShow, setkeyboardIsShow] = useState(false);
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('duysong435@gmail.com');
+    const [password, setPassword] = useState('5555555');
     const isValidationOK = () => email.length > 0 && password.length > 0
         && isValiEmail(email) == true
         && isValiPassord(password) == true
@@ -36,7 +36,7 @@ const Login = (props) => {
     const setData = async () => {
         try {
             await AsyncStorage.setItem('UserName', email);
-            navigate('Home');
+            navigate('TabUI');
         } catch (error) {
             console.log(error)
         }
@@ -46,7 +46,8 @@ const Login = (props) => {
     const { navigate, goBack } = navigation;
     return <View style={{
         marginTop: 30,
-        flex: 100
+        flex: 100,
+        backgroundColor: 'white'
     }}>
         <View style={{
             flex: 40
@@ -127,13 +128,15 @@ const Login = (props) => {
                 }}
                 disabled={isValidationOK() == false}
                 isValidation={isValidationOK() == false ? 0.5 : 1}
+                fontSizes={fontSizes.h3}
             />
             <MainButton
                 name='Sign Up'
                 color={colors.main}
                 onPress={() => {
-                    alert('Cho long')
+                    navigate('Register')
                 }}
+                fontSizes= {fontSizes.h3}
             />
         </View>}
     </View>

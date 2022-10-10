@@ -1,7 +1,14 @@
 import { TouchableOpacity, Text } from "react-native";
 
 const MainButton = (props) => {
-    const { name, color, onPress, disabled, isValidation } = props;
+    const { name,
+        color,
+        onPress,
+        disabled,
+        isValidation,
+        fontSizes
+    } = props;
+
     return <TouchableOpacity
         disabled={disabled}
         onPress={onPress}
@@ -17,7 +24,8 @@ const MainButton = (props) => {
         }}>
         <Text style={{
             color: 'black',
-            alignSelf: 'center'
+            alignSelf: 'center',
+            fontSize: fontSizes
         }}>{name}</Text>
     </TouchableOpacity>
 }
